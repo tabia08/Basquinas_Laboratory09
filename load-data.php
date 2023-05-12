@@ -2,30 +2,28 @@
 
 require "config.php";
 
-use App\Student;
+use App\Pet;
 
 try {
-	Student::register('Richard', 'Feynman', 'richard@feynman.com');
-	echo "<li>Added 1 student";
+	Pet::register('Kat', 'Female', '03-22-20010', 'Baron', 'basquinas@gmail.com', 'Quirino Street', '90905434323');
+	echo "<li>Added 1 pet";
 
-	$students = [
+	$pets = [
 		[
-			'first_name' => 'Albert',
-			'last_name' => 'Einstein',
-			'email' => 'albert@einstein.com'
+			'name' => 'Lukas',
+			'gender' => 'Male',
+			'birthdate' => '12-21-2012',
+			'owner' => 'Youji',
+			'email' => 'asd@gmail.com',
+			'address' => 'Lourdes Sur East',
+			'contact_number' => '90054436842'
 		],
-		[
-			'first_name' => 'Paul',
-			'last_name' => 'Erdos',
-			'email' => 'paul@erdos.com'
-		]
 	];
-	Student::registerMany($students);
-	echo "<li>Added " . count($students) . " more students";
+	Pet::registerMany($pets);
+	echo "<li>Added " . count($pets) . " more pets";
 	echo "<br /><a href='index.php'>Proceed to Index Page</a>";
 
 } catch (PDOException $e) {
 	error_log($e->getMessage());
 	echo "<h1 style='color: red'>" . $e->getMessage() . "</h1>";
 }
-

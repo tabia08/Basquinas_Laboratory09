@@ -4,9 +4,14 @@ require "config.php";
 
 use App\Pet;
 
+
 try {
-	Pet::clearTable();
-	echo "<li>Truncated table";
+	$id = $_GET['id'];
+	$result = Pet::deleteById($id);
+
+	if ($result) {
+		header('Location: index.php');
+	}
 
 } catch (PDOException $e) {
 	error_log($e->getMessage());
